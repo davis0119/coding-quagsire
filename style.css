@@ -24,10 +24,15 @@ body {
   line-height: 1.6;
 }
 
+/* main fills the screen so the footer can sit at the bottom of it */
 main {
+  display: flex;
+  flex-direction: column;
   max-width: 680px;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
-  padding: 48px 16px 64px;
+  padding: 48px 16px 20px;
 }
 
 header { text-align: center; }
@@ -52,10 +57,10 @@ h2 {
 ul { margin: 0; padding-left: 1.2em; }
 li::marker { color: var(--pond); }
 em { color: var(--pond); font-style: normal; font-weight: 600; }
-a { color: var(--lamp); }
+a { color: inherit; }
 
-footer { margin-top: 40px; text-align: center; }
-.fine { font-size: 0.8rem; color: var(--muted); }
+footer { margin-top: auto; padding-top: 40px; text-align: center; }
+.fine { margin: 0; font-size: 0.8rem; color: var(--muted); }
 
 .terminal {
   margin: 16px 0 0;
