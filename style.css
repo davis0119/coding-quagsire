@@ -24,10 +24,15 @@ body {
   line-height: 1.6;
 }
 
+/* main fills the screen so the footer can sit at the bottom of it */
 main {
+  display: flex;
+  flex-direction: column;
   max-width: 680px;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
-  padding: 48px 16px 64px;
+  padding: 48px 16px 20px;
 }
 
 header { text-align: center; }
@@ -52,10 +57,10 @@ h2 {
 ul { margin: 0; padding-left: 1.2em; }
 li::marker { color: var(--pond); }
 em { color: var(--pond); font-style: normal; font-weight: 600; }
-a { color: var(--lamp); }
+a { color: inherit; }
 
-footer { margin-top: 40px; text-align: center; }
-.fine { font-size: 0.8rem; color: var(--muted); }
+footer { margin-top: auto; padding-top: 40px; text-align: center; }
+.fine { margin: 0; font-size: 0.8rem; color: var(--muted); }
 
 .terminal {
   margin: 16px 0 0;
@@ -95,7 +100,7 @@ footer { margin-top: 40px; text-align: center; }
   cursor: pointer;
 }
 #sound:hover { color: var(--cream); border-color: var(--pond); }
-.cursor { color: var(--lamp); animation: blink-cursor 1s steps(2) infinite; }
+.cursor { color: var(--lamp); animation: blink-cursor 1s steps(2) infinite; display: inline-block; width: 0; }
 
 /* ---------- scene ---------- */
 
@@ -138,8 +143,8 @@ footer { margin-top: 40px; text-align: center; }
 .spraying .mouth { opacity: 0; }
 .jet { transform-box: fill-box; transform-origin: 50% 0; }
 .spraying .jet { animation: spray 0.9s ease-out forwards; }
-.jet-outer { fill: #bfe9fa; opacity: 0.8; }
-.jet-inner { fill: #ffffff; opacity: 0.7; }
+.jet-outer { fill: url(#water); filter: url(#soften); }
+.jet-inner { fill: #ffffff; opacity: 0.55; filter: url(#soften); }
 
 .cup-body { fill: var(--cream); }
 .handle { fill: none; stroke: var(--cream); stroke-width: 7; stroke-linecap: round; }

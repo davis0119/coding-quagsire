@@ -9,6 +9,7 @@ const LEFT_HAND = new Set([
 ]);
 const PLIP_NOTES = [261.6, 293.7, 329.6, 392.0, 440.0, 523.3, 587.3, 659.3]; // C major pentatonic
 const PLIP_PITCH = 0.75; // typing sounds sit a fourth below the written notes; lower = deeper
+const PLIP_VOLUME = 0.15;
 const CHORDS = [
   [174.6, 220.0, 261.6, 329.6], // Fmaj7
   [164.8, 196.0, 246.9, 293.7], // Em7
@@ -137,7 +138,7 @@ function hiss(at, peak, length, filterType, freq) {
 function plip(code) {
   const index = [...code].reduce((sum, c) => sum + c.charCodeAt(0), 0) % PLIP_NOTES.length;
   const freq = PLIP_NOTES[index] * PLIP_PITCH;
-  tone('sine', freq * 1.6, ctx.currentTime, 0.22, 0.004, 0.22, freq);
+  tone('sine', freq * 1.6, ctx.currentTime, PLIP_VOLUME, 0.004, 0.22, freq);
 }
 
 function whoosh() {
@@ -148,7 +149,7 @@ function whoosh() {
   filter.type = 'bandpass';
   filter.frequency.setValueAtTime(500, at);
   filter.frequency.exponentialRampToValueAtTime(2600, at + 0.5);
-  src.connect(filter).connect(envelope(at, 0.5, 0.08, 0.7));
+  src.connect(filter).connect(envelope(at, 0.33, 0.08, 0.7));
   src.start(at, 0, 0.7);
 }
 
