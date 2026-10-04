@@ -100,7 +100,7 @@ footer { margin-top: auto; padding-top: 40px; text-align: center; }
   cursor: pointer;
 }
 #sound:hover { color: var(--cream); border-color: var(--pond); }
-.cursor { color: var(--lamp); animation: blink-cursor 1s steps(2) infinite; }
+.cursor { color: var(--lamp); animation: blink-cursor 1s steps(2) infinite; display: inline-block; width: 0; }
 
 /* ---------- scene ---------- */
 
