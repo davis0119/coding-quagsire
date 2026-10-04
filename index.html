@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="room">
   <main>
     <header>
       <h1>Coding Quagsire</h1>
@@ -16,7 +17,6 @@
 
     <svg class="scene" viewBox="0 0 640 480" role="img" aria-label="A Quagsire wearing headphones at a keyboard on a rainy night. It types when you type.">
       <defs>
-        <clipPath id="room"><rect width="640" height="480" rx="28"/></clipPath>
         <clipPath id="pane"><rect x="410" y="36" width="180" height="170" rx="14"/></clipPath>
         <pattern id="drops" width="30" height="40" patternUnits="userSpaceOnUse">
           <line x1="20" y1="2" x2="15" y2="18" class="drop"/>
@@ -34,9 +34,8 @@
         </radialGradient>
       </defs>
 
-      <g clip-path="url(#room)">
-        <rect width="640" height="480" class="wall"/>
-
+      <!-- no frame: the wall is the page itself, and the desk runs off every edge -->
+      <g>
         <!-- window -->
         <rect x="410" y="36" width="180" height="170" rx="14" class="sky"/>
         <g clip-path="url(#pane)">
@@ -76,8 +75,8 @@
         </g>
 
         <!-- desk -->
-        <rect y="404" width="640" height="76" class="desk"/>
-        <rect y="404" width="640" height="6" class="desk-edge"/>
+        <rect x="-4000" y="404" width="8640" height="4000" class="desk"/>
+        <rect x="-4000" y="404" width="8640" height="6" class="desk-edge"/>
 
         <!-- tea -->
         <g class="mug">
@@ -102,8 +101,8 @@
         <g class="watergun">
           <g class="jet">
             <!-- rounded tops start inside the open mouth, then flare outward -->
-            <path class="jet-outer" d="M284 242 Q300 226 316 242 C322 300 372 400 424 480 L176 480 C228 400 278 300 284 242 Z"/>
-            <path class="jet-inner" d="M293 242 Q300 233 307 242 C310 310 332 410 348 480 L252 480 C268 410 290 310 293 242 Z"/>
+            <path class="jet-outer" d="M284 242 Q300 226 316 242 C322 300 372 400 424 480 L456 535 L144 535 L176 480 C228 400 278 300 284 242 Z"/>
+            <path class="jet-inner" d="M293 242 Q300 233 307 242 C310 310 332 410 348 480 L359 535 L241 535 L252 480 C268 410 290 310 293 242 Z"/>
           </g>
         </g>
       </g>
@@ -119,6 +118,7 @@
       </p>
     </footer>
   </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

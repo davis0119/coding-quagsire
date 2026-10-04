@@ -18,11 +18,15 @@
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 50% 0, var(--night), var(--night-deep) 70%) fixed;
+  background: var(--wall);
   color: var(--cream);
   font-family: ui-rounded, "Avenir Next", system-ui, sans-serif;
   line-height: 1.6;
 }
+
+/* the scene has no frame: its desk is drawn far past the drawing's edges and
+   this clips it to the page */
+.room { overflow: hidden; }
 
 /* main fills the screen so the footer can sit at the bottom of it */
 main {
@@ -59,8 +63,8 @@ li::marker { color: var(--pond); }
 em { color: var(--pond); font-style: normal; font-weight: 600; }
 a { color: inherit; }
 
-footer { margin-top: auto; padding-top: 40px; text-align: center; }
-.fine { margin: 0; font-size: 0.8rem; color: var(--muted); }
+footer { position: relative; margin-top: auto; padding-top: 40px; text-align: center; }
+.fine { margin: 0; font-size: 0.8rem; color: var(--cream); opacity: 0.75; } /* sits on the desk */
 
 .terminal {
   margin: 16px 0 0;
@@ -93,8 +97,9 @@ footer { margin-top: auto; padding-top: 40px; text-align: center; }
   margin: 10px 0 0 auto;
   padding: 6px 12px;
   border-radius: 999px;
+  position: relative;
   border: 1px solid #23505d;
-  background: transparent;
+  background: var(--night-deep);
   color: var(--muted);
   font: 0.8rem ui-monospace, "SF Mono", Menlo, monospace;
   cursor: pointer;
@@ -104,9 +109,8 @@ footer { margin-top: auto; padding-top: 40px; text-align: center; }
 
 /* ---------- scene ---------- */
 
-.scene { display: block; width: 100%; height: auto; }
+.scene { display: block; width: 100%; height: auto; overflow: visible; }
 
-.wall { fill: var(--wall); }
 .sky { fill: #0b1d33; }
 .moon { fill: var(--lamp); opacity: 0.9; }
 .frame { fill: none; stroke: var(--cream); stroke-width: 6; }
