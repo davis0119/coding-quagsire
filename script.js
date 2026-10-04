@@ -149,7 +149,7 @@ function whoosh() {
   filter.type = 'bandpass';
   filter.frequency.setValueAtTime(500, at);
   filter.frequency.exponentialRampToValueAtTime(2600, at + 0.5);
-  src.connect(filter).connect(envelope(at, 0.5, 0.08, 0.7));
+  src.connect(filter).connect(envelope(at, 0.33, 0.08, 0.7));
   src.start(at, 0, 0.7);
 }
 
