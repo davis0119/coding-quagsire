@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coding Quagsire</title>
-  <meta name="description" content="Wooper's cousin">
+  <meta name="description" content="Wooper's bigger cousin, shipping code in the rain.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <header>
       <h1>Coding Quagsire</h1>
-      <p class="tagline">Wooper's cousin.</p>
+      <p class="tagline">Wooper's bigger cousin, shipping code in the rain.</p>
     </header>
 
     <svg class="scene" viewBox="0 0 640 480" role="img" aria-label="A Quagsire wearing headphones at a keyboard on a rainy night. It types when you type.">
@@ -21,13 +21,6 @@
         <pattern id="drops" width="30" height="40" patternUnits="userSpaceOnUse">
           <line x1="20" y1="2" x2="15" y2="18" class="drop"/>
         </pattern>
-        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#e8f9ff" stop-opacity=".95"/>
-          <stop offset="1" stop-color="#bfe9fa" stop-opacity=".55"/>
-        </linearGradient>
-        <filter id="soften" x="-10%" y="-5%" width="120%" height="110%">
-          <feGaussianBlur stdDeviation="1.6"/>
-        </filter>
         <radialGradient id="glow">
           <stop offset="0" stop-color="#d9fbff" stop-opacity=".55"/>
           <stop offset="1" stop-color="#d9fbff" stop-opacity="0"/>
@@ -101,21 +94,31 @@
         <!-- water gun (Ctrl+C): sprays down toward the terminal -->
         <g class="watergun">
           <g class="jet">
-            <!-- rounded tops start inside the open mouth, then flare outward -->
-            <path class="jet-outer" d="M284 242 Q300 226 316 242 C322 300 372 400 424 480 L176 480 C228 400 278 300 284 242 Z"/>
-            <path class="jet-inner" d="M293 242 Q300 233 307 242 C310 310 332 410 348 480 L252 480 C268 410 290 310 293 242 Z"/>
+            <path class="jet-outer" d="M286 240 L314 240 L410 480 L190 480 Z"/>
+            <path class="jet-inner" d="M294 240 L306 240 L340 480 L260 480 Z"/>
           </g>
         </g>
       </g>
     </svg>
 
-    <pre class="terminal"><span class="prompt">quag ~ $</span> <span id="typed"></span><span class="cursor">▍</span><span id="hint">start typing</span></pre>
+    <pre class="terminal"><span class="prompt">quag ~ $</span> <span id="typed"></span><span class="cursor">▍</span><span id="hint"> start typing (or tap Quagsire) — sound on</span></pre>
     <button id="sound" type="button" aria-pressed="true">sound: on</button>
 
+    <section>
+      <h2>Why Quagsire codes</h2>
+      <ul>
+        <li>It is damp and pleasant.</li>
+        <li>It never notices the bugs, so technically there are none.</li>
+        <li><em>Unaware</em>: ignores all changes to the sprint scope.</li>
+        <li><em>Water Absorb</em>: spilled tea restores HP.</li>
+      </ul>
+    </section>
+
     <footer>
+      <p>I'm your co-worker. <strong>Quag.</strong></p>
       <p class="fine">
-        Inspired by <a href="https://hostrider.com/">Coding Cat</a> and <a href="https://lofigirl.com/">Lofi Girl</a>.
-        Quagsire is a Pokémon © Nintendo / Game Freak. Not affiliated.
+        Fan drawing, inspired by <a href="https://hostrider.com/">Coding Cat</a>.
+        Quagsire is a Pokémon © Nintendo / Game Freak / Creatures. Not affiliated.
       </p>
     </footer>
   </main>
