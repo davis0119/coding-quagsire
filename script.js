@@ -9,7 +9,7 @@ const LEFT_HAND = new Set([
 ]);
 const PLIP_NOTES = [261.6, 293.7, 329.6, 392.0, 440.0, 523.3, 587.3, 659.3]; // C major pentatonic
 const PLIP_PITCH = 0.75; // typing sounds sit a fourth below the written notes; lower = deeper
-const PLIP_VOLUME = 0.15;
+const PLIP_VOLUME = 0.2;
 const CHORDS = [
   [174.6, 220.0, 261.6, 329.6], // Fmaj7
   [164.8, 196.0, 246.9, 293.7], // Em7
@@ -115,11 +115,11 @@ function envelope(at, peak, attack, length) {
   return gain;
 }
 
-function tone(type, freq, at, peak, attack, length, dropTo) {
+function tone(type, freq, at, peak, attack, length, glideTo) {
   const osc = ctx.createOscillator();
   osc.type = type;
   osc.frequency.setValueAtTime(freq, at);
-  if (dropTo) osc.frequency.exponentialRampToValueAtTime(dropTo, at + length * 0.4);
+  if (glideTo) osc.frequency.exponentialRampToValueAtTime(glideTo, at + length * 0.4);
   osc.connect(envelope(at, peak, attack, length));
   osc.start(at);
   osc.stop(at + length);
@@ -138,7 +138,8 @@ function hiss(at, peak, length, filterType, freq) {
 function plip(code) {
   const index = [...code].reduce((sum, c) => sum + c.charCodeAt(0), 0) % PLIP_NOTES.length;
   const freq = PLIP_NOTES[index] * PLIP_PITCH;
-  tone('sine', freq * 1.6, ctx.currentTime, PLIP_VOLUME, 0.004, 0.22, freq);
+  // a bubble: soft attack, pitch rising as it pops
+  tone('sine', freq, ctx.currentTime, PLIP_VOLUME, 0.014, 0.18, freq * 1.7);
 }
 
 function whoosh() {
