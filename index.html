@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding Quagsire</title>
+  <meta name="description" content="Wooper's bigger cousin, shipping code in the rain.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Coding Quagsire</h1>
+      <p class="tagline">Wooper's bigger cousin, shipping code in the rain.</p>
+    </header>
+
+    <svg class="scene" viewBox="0 0 640 480" role="img" aria-label="A Quagsire wearing headphones at a keyboard on a rainy night. It types when you type.">
+      <defs>
+        <clipPath id="room"><rect width="640" height="480" rx="28"/></clipPath>
+        <clipPath id="pane"><rect x="410" y="36" width="180" height="170" rx="14"/></clipPath>
+        <pattern id="drops" width="30" height="40" patternUnits="userSpaceOnUse">
+          <line x1="20" y1="2" x2="15" y2="18" class="drop"/>
+        </pattern>
+        <radialGradient id="glow">
+          <stop offset="0" stop-color="#d9fbff" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#d9fbff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <g clip-path="url(#room)">
+        <rect width="640" height="480" class="wall"/>
+
+        <!-- window -->
+        <rect x="410" y="36" width="180" height="170" rx="14" class="sky"/>
+        <g clip-path="url(#pane)">
+          <circle cx="548" cy="78" r="20" class="moon"/>
+          <rect class="rain" x="400" y="-40" width="200" height="300" fill="url(#drops)"/>
+        </g>
+        <rect x="410" y="36" width="180" height="170" rx="14" class="frame"/>
+        <line x1="500" y1="36" x2="500" y2="206" class="frame"/>
+
+        <!-- music notes -->
+        <text class="note n1" x="120" y="170">♪</text>
+        <text class="note n2" x="92" y="205">♫</text>
+        <text class="note n3" x="140" y="120">♪</text>
+
+        <!-- tail -->
+        <g class="tail">
+          <path class="skin" d="M380 330 C450 320 500 350 540 290 C548 278 562 285 556 302 C540 382 450 412 380 400 Z"/>
+          <path class="fin" d="M408 330 C455 328 500 346 538 298"/>
+        </g>
+
+        <!-- body -->
+        <ellipse class="skin" cx="300" cy="360" rx="118" ry="120"/>
+        <ellipse class="belly" cx="300" cy="380" rx="70" ry="80"/>
+
+        <!-- head -->
+        <g class="head">
+          <ellipse class="skin" cx="300" cy="200" rx="120" ry="95"/>
+          <ellipse cx="300" cy="250" rx="110" ry="60" fill="url(#glow)" class="screen-glow"/>
+          <circle class="eye" cx="236" cy="188" r="7"/>
+          <circle class="eye" cx="364" cy="188" r="7"/>
+          <path class="mouth" d="M214 226 Q300 262 386 226"/>
+          <ellipse class="maw" cx="300" cy="238" rx="30" ry="21"/>
+          <!-- headphones -->
+          <path class="band" d="M175 182 A130 130 0 0 1 425 182"/>
+          <rect class="cup" x="158" y="165" width="34" height="72" rx="15"/>
+          <rect class="cup" x="408" y="165" width="34" height="72" rx="15"/>
+        </g>
+
+        <!-- desk -->
+        <rect y="404" width="640" height="76" class="desk"/>
+        <rect y="404" width="640" height="6" class="desk-edge"/>
+
+        <!-- tea -->
+        <g class="mug">
+          <path class="steam s1" d="M92 352 q-8 -12 0 -24 q8 -12 0 -24"/>
+          <path class="steam s2" d="M110 356 q-8 -12 0 -24 q8 -12 0 -24"/>
+          <path class="handle" d="M128 378 q22 0 22 16 q0 16 -22 16"/>
+          <rect class="cup-body" x="72" y="366" width="58" height="56" rx="10"/>
+        </g>
+
+        <!-- keyboard -->
+        <rect class="keyboard" x="186" y="396" width="228" height="34" rx="8"/>
+        <g class="keys">
+          <line x1="198" y1="407" x2="402" y2="407"/>
+          <line x1="198" y1="419" x2="402" y2="419"/>
+        </g>
+
+        <!-- arms -->
+        <ellipse class="arm arm-l" cx="232" cy="368" rx="24" ry="42" transform="rotate(12 232 368)"/>
+        <ellipse class="arm arm-r" cx="368" cy="368" rx="24" ry="42" transform="rotate(-12 368 368)"/>
+
+        <!-- water gun (Ctrl+C): sprays down toward the terminal -->
+        <g class="watergun">
+          <g class="jet">
+            <path class="jet-outer" d="M286 240 L314 240 L410 480 L190 480 Z"/>
+            <path class="jet-inner" d="M294 240 L306 240 L340 480 L260 480 Z"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    <pre class="terminal"><span class="prompt">quag ~ $</span> <span id="typed"></span><span class="cursor">▍</span><span id="hint"> start typing (or tap Quagsire) — sound on</span></pre>
+    <button id="sound" type="button" aria-pressed="true">sound: on</button>
+
+    <section>
+      <h2>Why Quagsire codes</h2>
+      <ul>
+        <li>It is damp and pleasant.</li>
+        <li>It never notices the bugs, so technically there are none.</li>
+        <li><em>Unaware</em>: ignores all changes to the sprint scope.</li>
+        <li><em>Water Absorb</em>: spilled tea restores HP.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>I'm your co-worker. <strong>Quag.</strong></p>
+      <p class="fine">
+        Fan drawing, inspired by <a href="https://hostrider.com/">Coding Cat</a>.
+        Quagsire is a Pokémon © Nintendo / Game Freak / Creatures. Not affiliated.
+      </p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

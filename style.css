@@ -1,0 +1,183 @@
+:root {
+  --night: #0e2730;
+  --night-deep: #091b22;
+  --wall: #16404c;
+  --pond: #8fcde6;
+  --pond-shade: #6fb2d0;
+  --fin: #4f6fa8;
+  --gill: #b394e0; /* Wooper's gill purple */
+  --gill-deep: #8762bd;
+  --ink: #12222b;
+  --lamp: #ffd98a;
+  --cream: #f3ecdc;
+  --muted: #9dbac2;
+  --wood: #6b4a3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 0, var(--night), var(--night-deep) 70%) fixed;
+  color: var(--cream);
+  font-family: ui-rounded, "Avenir Next", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+}
+
+header { text-align: center; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.tagline { margin: 8px 0 28px; color: var(--muted); }
+
+h2 {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lamp);
+  margin: 40px 0 8px;
+}
+
+ul { margin: 0; padding-left: 1.2em; }
+li::marker { color: var(--pond); }
+em { color: var(--pond); font-style: normal; font-weight: 600; }
+a { color: var(--lamp); }
+
+footer { margin-top: 40px; text-align: center; }
+.fine { font-size: 0.8rem; color: var(--muted); }
+
+.terminal {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  min-height: 3.2em;
+  border-radius: 14px;
+  background: var(--night-deep);
+  border: 1px solid #23505d;
+  font: 0.9rem/1.5 ui-monospace, "SF Mono", Menlo, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.terminal { position: relative; overflow: hidden; }
+/* the water arriving from above and washing the line away */
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, #bfe9fa 35%, var(--pond) 70%, transparent);
+  translate: 0 -100%;
+  pointer-events: none;
+}
+.spraying .terminal::after { animation: wave 0.6s 0.15s ease-in; }
+.spraying #typed { animation: wash 0.5s forwards; }
+.prompt { color: var(--pond); }
+#hint { color: var(--muted); }
+
+#sound {
+  display: block;
+  margin: 10px 0 0 auto;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #23505d;
+  background: transparent;
+  color: var(--muted);
+  font: 0.8rem ui-monospace, "SF Mono", Menlo, monospace;
+  cursor: pointer;
+}
+#sound:hover { color: var(--cream); border-color: var(--pond); }
+.cursor { color: var(--lamp); animation: blink-cursor 1s steps(2) infinite; }
+
+/* ---------- scene ---------- */
+
+.scene { display: block; width: 100%; height: auto; }
+
+.wall { fill: var(--wall); }
+.sky { fill: #0b1d33; }
+.moon { fill: var(--lamp); opacity: 0.9; }
+.frame { fill: none; stroke: var(--cream); stroke-width: 6; }
+.drop { stroke: #9fd6ee; stroke-width: 2; stroke-linecap: round; opacity: 0.7; }
+.rain { animation: rain 0.45s linear infinite; }
+
+.skin { fill: var(--pond); }
+.belly { fill: #a9dcf0; opacity: 0.6; }
+.fin { fill: none; stroke: var(--fin); stroke-width: 12; stroke-linecap: round; }
+.eye { fill: var(--ink); transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+.mouth { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.band { fill: none; stroke: var(--gill); stroke-width: 12; stroke-linecap: round; }
+.cup { fill: var(--gill-deep); }
+
+/* head bob and music notes only once the music is playing */
+.playing .head { animation: bob 0.833s ease-in-out infinite alternate; }
+.scene { cursor: pointer; touch-action: manipulation; }
+.tail { transform-box: fill-box; transform-origin: left center; animation: sway 2.4s ease-in-out infinite alternate; }
+.screen-glow { animation: flicker 3s ease-in-out infinite; }
+
+.desk { fill: var(--wood); }
+.desk-edge { fill: #8a6450; }
+.keyboard { fill: #233a44; }
+.keys line { stroke: #5d7f8a; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 9 6; }
+
+.arm { fill: var(--pond); stroke: var(--pond-shade); stroke-width: 3; translate: 0 -12px; transition: translate 50ms ease-out; }
+.arm.down { translate: 0 0; }
+
+.watergun { opacity: 0; pointer-events: none; }
+.spraying .watergun { opacity: 1; }
+/* while spraying, the smile is swapped for an open mouth */
+.maw { fill: var(--ink); opacity: 0; }
+.spraying .maw { opacity: 1; }
+.spraying .mouth { opacity: 0; }
+.jet { transform-box: fill-box; transform-origin: 50% 0; }
+.spraying .jet { animation: spray 0.9s ease-out forwards; }
+.jet-outer { fill: #bfe9fa; opacity: 0.8; }
+.jet-inner { fill: #ffffff; opacity: 0.7; }
+
+.cup-body { fill: var(--cream); }
+.handle { fill: none; stroke: var(--cream); stroke-width: 7; stroke-linecap: round; }
+.steam { fill: none; stroke: var(--cream); stroke-width: 3; stroke-linecap: round; opacity: 0; animation: steam 3s ease-in-out infinite; }
+.s2 { animation-delay: -1.5s; }
+
+.note { fill: var(--gill); font-size: 30px; opacity: 0; }
+.playing .note { animation: float 4s ease-in infinite; }
+.n2 { animation-delay: -1.3s; }
+.n3 { animation-delay: -2.6s; }
+
+@keyframes bob { to { translate: 0 4px; } }
+@keyframes sway { from { rotate: -3deg; } to { rotate: 4deg; } }
+@keyframes rain { to { translate: 0 40px; } }
+@keyframes blink { 0%, 94%, 100% { scale: 1 1; } 97% { scale: 1 0.1; } }
+@keyframes flicker { 50% { opacity: 0.6; } }
+@keyframes blink-cursor { 50% { opacity: 0; } }
+@keyframes spray {
+  0% { scale: 1 0; opacity: 1; }
+  20% { scale: 1 1; }
+  75% { opacity: 1; }
+  100% { scale: 1 1; opacity: 0; }
+}
+@keyframes wave { to { translate: 0 100%; } }
+@keyframes wash { to { opacity: 0; filter: blur(4px); } }
+@keyframes steam {
+  0% { opacity: 0; translate: 0 8px; }
+  40% { opacity: 0.5; }
+  100% { opacity: 0; translate: 0 -14px; }
+}
+@keyframes float {
+  0% { opacity: 0; translate: 0 0; }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; translate: -24px -70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene *, .cursor { animation: none; }
+  .scene .arm { transition: none; }
+  .steam { opacity: 0.6; }
+}
