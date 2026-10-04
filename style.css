@@ -138,8 +138,8 @@ footer { margin-top: 40px; text-align: center; }
 .spraying .mouth { opacity: 0; }
 .jet { transform-box: fill-box; transform-origin: 50% 0; }
 .spraying .jet { animation: spray 0.9s ease-out forwards; }
-.jet-outer { fill: #bfe9fa; opacity: 0.8; }
-.jet-inner { fill: #ffffff; opacity: 0.7; }
+.jet-outer { fill: url(#water); filter: url(#soften); }
+.jet-inner { fill: #ffffff; opacity: 0.55; filter: url(#soften); }
 
 .cup-body { fill: var(--cream); }
 .handle { fill: none; stroke: var(--cream); stroke-width: 7; stroke-linecap: round; }
